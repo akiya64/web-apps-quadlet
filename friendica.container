@@ -1,0 +1,15 @@
+[Unit]
+Description=Friendica Server
+After=friendicadb.service
+
+[Container]
+Environment=MYSQL_HOST=friedicadb:3306 MYSQL_USER=friendica MYSQL_DATABASE=friendica FRIENDICA_ADMIN_MAIL=root@friendica.local
+Image=docker.io/library/friendica:fpm
+PublishPort=8080:80
+Network=web-sites.network
+Volume=/home/debian/pods/friendica/app:/var/www/html
+Secret=friendica-db-pass,type=env,target=MYSQL_PASSWORD
+
+
+[Service]
+Restart=always

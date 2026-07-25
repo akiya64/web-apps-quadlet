@@ -1,0 +1,17 @@
+[Unit]
+Description=MariaDB Friendica Database
+
+[Install]
+WantedBy=friendica.service multi-user.target default.target
+
+[Container]
+Image=docker.io/library/mariadb
+Volume=/home/debian/pods/friendica/db_data:/var/lib/mysql
+Environment=MYSQL_ROOT_PASSWORD=wordpress MYSQL_DATABASE=friendica MYSQL_USER=friendica
+Network=web-sites.network
+PublishPort=3306:3306
+Secret=friendica-db-pass,type=env,target=MYSQL_PASSWORD
+Secret=friendica-db-root-pass,type=env,target=MYSQL_ROOT_PASSWORD
+
+[Service]
+Restart=always
