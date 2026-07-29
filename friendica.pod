@@ -1,0 +1,3 @@
+[Pod]
+PodName=friendica
+PublishPort=8080:80
