@@ -1,7 +1,15 @@
-{
-  email autumnsky64@gmail.com
-}
-
 fedi.autumnsky.jp {
-    reverse_proxy friendica:80
+	root * /var/www/html
+
+	php_fastcgi friendica:9000
+
+	# Route legacy endpoints and front-controller requests
+	# If a path isn't a real file on disk, rewrite it so Friendica handles it
+	@not_file {
+		not file {path}
+	}
+	rewrite @not_file /index.php?q={path}&{query}
+
+	# Serve static assets directly (CSS, JS, Images)
+	file_server
 }
