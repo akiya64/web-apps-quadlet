@@ -5,6 +5,7 @@ Description=MariaDB Friendica Database
 WantedBy=friendica.service multi-user.target default.target
 
 [Container]
+ContainerName=friendica-db
 Image=docker.io/library/mariadb:latest
 Volume=/%h/pods/friendica/db_data:/var/lib/mysql
 Environment=MYSQL_ROOT_PASSWORD=wordpress MYSQL_DATABASE=friendica MYSQL_USER=friendica
