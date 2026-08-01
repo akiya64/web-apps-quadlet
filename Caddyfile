@@ -1,0 +1,7 @@
+{
+  email autumnsky64@gmail.com
+}
+
+fedi.autumnsky.jp {
+    reverse_proxy friendica:80
+}
