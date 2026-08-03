@@ -8,7 +8,7 @@ Environment=MYSQL_HOST=friendica-db:3306 MYSQL_USER=friendica MYSQL_DATABASE=fri
 Environment=FRIENDICA_URL=https://fedi.autumnsky.jp
 Pod=friendica.pod
 Image=docker.io/library/friendica:stable
-Volume=/%h/pods/friendica/html:/var/www/html
+Volume=%h/pods/friendica/html:/var/www/html
 Secret=friendica-db-pass,type=env,target=MYSQL_PASSWORD
 
 [Service]
