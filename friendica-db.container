@@ -6,12 +6,12 @@ WantedBy=friendica.service multi-user.target default.target
 
 [Container]
 ContainerName=friendica-db
-Image=docker.io/library/mariadb:latest
-Volume=/%h/pods/friendica/db_data:/var/lib/mysql
-Environment=MYSQL_ROOT_PASSWORD=wordpress MYSQL_DATABASE=friendica MYSQL_USER=friendica
 Pod=friendica.pod
-Secret=friendica-db-pass,type=env,target=MYSQL_PASSWORD
-Secret=friendica-db-root-pass,type=env,target=MYSQL_ROOT_PASSWORD
+Image=docker.io/library/mariadb:latest
+Volume=%h/pods/friendica/db_data:/var/lib/mysql:Z
+Environment=MARIADB_DATABASE=friendica MARIADB_USER=friendica
+Secret=friendica-db-pass,type=env,target=MARIADB_PASSWORD
+Secret=friendica-db-root-pass,type=env,target=MARIADB_ROOT_PASSWORD
 
 [Service]
 Restart=always
