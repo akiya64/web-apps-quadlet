@@ -4,9 +4,9 @@ Description=Caddy http server
 [Container]
 Image=docker.io/library/caddy:2-alpine
 Pod=caddy.pod
-Volume=/%h/pods/caddy/caddyfile:/etc/caddy
-Volume=/%h/pods/caddy/data:/data
-Volume=/%h/pods/caddy/config:/config
+Volume=%h/pods/caddy/caddyfile:/etc/caddy
+Volume=%h/pods/caddy/data:/data
+Volume=%h/pods/caddy/config:/config
 
 [Service]
 Restart=always

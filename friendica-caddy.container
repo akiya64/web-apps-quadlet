@@ -4,7 +4,8 @@ Requires=friendica-fpm.container
 After=friendica-fpm.container
 
 [Container]
-ContainerName=friendica-web
-Image=docker.io/library/caddy:2-alpine
 Pod=friendica.pod
+ContainerName=friendica-caddy
+Image=docker.io/library/caddy:2-alpine
 Volume=%h/pods/friendica/caddy:/etc/caddy
+Volume=%h/pods/friendica/html:/srv/public

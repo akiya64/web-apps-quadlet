@@ -1,9 +1,7 @@
 :8080 {
-    root * /var/www/html
-    php_fastcgi friendica-fpm:9000
+    root * /srv/public
+    php_fastcgi friendica-fpm:9000 {
+                env PATH_INFO ""
+    }
     file_server
- 		@not_file {
-			not file {path}
-		}
-		rewrite @not_file /index.php?q={path}&{query}
 }
