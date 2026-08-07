@@ -2,7 +2,7 @@
 Description=MariaDB Friendica Database
 
 [Install]
-WantedBy=friendica.service multi-user.target default.target
+WantedBy=friendica-app.service multi-user.target default.target
 
 [Container]
 ContainerName=friendica-db

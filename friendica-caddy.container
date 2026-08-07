@@ -1,0 +1,10 @@
+[Unit]
+Description=Friendica internal Caddy
+Requires=friendica-fpm.container
+After=friendica-fpm.container
+
+[Container]
+ContainerName=friendica-web
+Image=docker.io/library/caddy:2-alpine
+Pod=friendica.pod
+Volume=%h/pods/friendica/caddy:/etc/caddy
