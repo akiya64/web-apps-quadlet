@@ -7,7 +7,7 @@ ContainerName=friendica-app
 Environment=MYSQL_HOST=friendica-db:3306 MYSQL_USER=friendica MYSQL_DATABASE=friendica FRIENDICA_ADMIN_MAIL=autumnsky64@gmail.com
 Environment=FRIENDICA_URL=https://fedi.autumnsky.jp
 Pod=friendica.pod
-Image=docker.io/library/friendica:stable
+Image=docker.io/library/friendica:stable-apache
 Volume=%h/pods/friendica/html:/var/www/html
 Secret=friendica-db-pass,type=env,target=MYSQL_PASSWORD
 
