@@ -1,7 +1,19 @@
 :8080 {
-    root * /srv/public
-    php_fastcgi friendica-fpm:9000 {
-                env PATH_INFO ""
-    }
+    root * /var/www/html
+
+    php_fastcgi 127.0.0.1:9000
     file_server
+    encode zstd gzip
+
+    @not_file {
+        not file {path}
+    }
+    rewrite @not_file /index.php?q={path}&{query}
+
+
+    header {
+        X-Content-Type-Options nosniff
+        X-Frame-Options "SAMEORIGIN"
+        Referrer-Policy "strict-origin-when-cross-origin"
+    }
 }
