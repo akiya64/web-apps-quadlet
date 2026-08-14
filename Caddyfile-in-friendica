@@ -8,8 +8,7 @@
     @not_file {
         not file {path}
     }
-    rewrite @not_file /index.php?q={path}&{query}
-
+    rewrite @not_file /index.php?pagename={path}
 
     header {
         X-Content-Type-Options nosniff
