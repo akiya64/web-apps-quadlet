@@ -1,18 +1,20 @@
 :8080 {
-    root * /var/www/html
+	root * /var/www/html
 
-    php_fastcgi friendica-fpm:9000
-    file_server
-    encode zstd gzip
+	route {
+		@notStatic {
+			not file {path}
+		}
+    rewrite @notStatic /index.php?q={path}&{query}
 
-    @not_file {
-        not file {path}
-    }
-    rewrite @not_file /index.php?pagename={path}
+		php_fastcgi friendica-fpm:9000
 
-    header {
-        X-Content-Type-Options nosniff
-        X-Frame-Options "SAMEORIGIN"
-        Referrer-Policy "strict-origin-when-cross-origin"
-    }
+		file_server
+	}
+
+	header {
+		X-Content-Type-Options nosniff
+		X-Frame-Options "SAMEORIGIN"
+		Referrer-Policy "strict-origin-when-cross-origin"
+	}
 }
