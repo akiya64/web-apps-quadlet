@@ -2,13 +2,14 @@
 Description=MariaDB Friendica Database
 
 [Install]
-WantedBy=friendica-app.service multi-user.target default.target
+WantedBy=friendica-fpm.service multi-user.target default.target
 
 [Container]
 ContainerName=friendica-db
 Pod=friendica.pod
 Image=docker.io/library/mariadb:latest
-Volume=%h/pods/friendica/db_data:/var/lib/mysql:Z
+Volume=%h/pods/friendica/db_data:/var/lib/mysql
+Volume=%h/.config/containers/systemd/friendica-db.cnf:/etc/friendica-db.cnf
 Environment=MARIADB_DATABASE=friendica MARIADB_USER=friendica
 Secret=friendica-db-pass,type=env,target=MARIADB_PASSWORD
 Secret=friendica-db-root-pass,type=env,target=MARIADB_ROOT_PASSWORD
