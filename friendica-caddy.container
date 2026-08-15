@@ -8,4 +8,4 @@ Pod=friendica.pod
 ContainerName=friendica-caddy
 Image=docker.io/library/caddy:2-alpine
 Volume=%h/.config/containers/systemd/friendica/caddy:/etc/caddy
-Volume=%h/pods/friendica/html:/srv/public
+Volume=%h/pods/friendica/html:/var/www/html
