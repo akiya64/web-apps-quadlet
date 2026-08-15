@@ -1,16 +1,16 @@
 :8080 {
-	root * /var/www/html
+	root /var/www/html/
 
-	route {
-		@notStatic {
-			not file {path}
-		}
-    rewrite @notStatic /index.php?q={path}&{query}
+	encode zstd gzip
 
-		php_fastcgi friendica-fpm:9000
-
-		file_server
+	@friendicaRouter {
+		not file {path}
 	}
+	rewrite @friendicaRouter /index.php?q={path}&{query}
+
+	php_fastcgi friendica-fpm:9000
+
+	file_server
 
 	header {
 		X-Content-Type-Options nosniff
