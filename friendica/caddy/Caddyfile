@@ -1,0 +1,20 @@
+:8080 {
+	root /var/www/html/
+
+	encode zstd gzip
+
+	@friendicaRouter {
+		not file {path}
+	}
+	rewrite @friendicaRouter /index.php?q={path}&{query}
+
+	php_fastcgi friendica-fpm:9000
+
+	file_server
+
+	header {
+		X-Content-Type-Options nosniff
+		X-Frame-Options "SAMEORIGIN"
+		Referrer-Policy "strict-origin-when-cross-origin"
+	}
+}

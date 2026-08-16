@@ -3,5 +3,5 @@
 }
 
 fedi.autumnsky.jp {
-	reverse_proxy friendica:80
+	reverse_proxy friendica:8080
 }
