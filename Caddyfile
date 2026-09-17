@@ -3,5 +3,5 @@
 }
 
 autumnsky.jp {
-	reverse_proxy friendica:8080
+	reverse_proxy pleroma:4000
 }
