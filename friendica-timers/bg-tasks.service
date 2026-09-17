@@ -1,9 +1,0 @@
-[Unit]
-Description=Run friendica background task
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/podman exec friendica-app bin/console worker
-
-[Install]
-WantedBy=default.target

@@ -1,3 +1,0 @@
-[Pod]
-PodName=friendica
-Network=web-apps.network
