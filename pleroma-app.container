@@ -1,0 +1,23 @@
+[Unit]
+Description=Pleroma app
+Requires=pleroma-db.service
+After=pleroma-db.service
+
+[Container]
+Image=localhost/pleroma
+ContainerName=pleroma-app
+Pod=pleroma.pod
+Environment=DB_USER=pleroma DB_NAME=pleroma DB_HOST=127.0.0.1
+Environment=DOMAIN=autumnsky.jp ADMIN_EMAIL=autumnsky64@gmail.com
+Volume=%h/pods/pleroma/config.exs:/var/lib/pleroma/config.exs
+Volume=%h/pods/pleroma/uploads:/var/lib/pleroma/uploads
+Volume=%h/pods/pleroma/static:/var/lib/pleroma/static
+Secret=pleroma-db-root,type=env,target=DB_PASS
+
+Exec=/bin/sh -c "/pleroma/bin/pleroma eval 'Pleroma.ReleaseTasks.migrate([])' && /pleroma/bin/pleroma start"
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

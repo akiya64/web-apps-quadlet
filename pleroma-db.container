@@ -1,0 +1,14 @@
+[Unit]
+Description=Postgresql
+
+[Container]
+Image=docker.io/library/postgres:18-alpine
+ContainerName=pleroma-db
+Pod=pleroma.pod
+Environment=POSTGRES_USER=pleroma
+Volume=%h/pods/pleroma/postgresql:/var/lib/postgresql
+Volume=%h/pods/pleroma/pginit:/docker-entrypoint-initdb.d
+Secret=pleroma-db-root,type=env,target=POSTGRES_PASSWORD
+
+[Install]
+WantedBy=multi-user.target
