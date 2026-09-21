@@ -5,3 +5,8 @@
 autumnsky.jp {
 	reverse_proxy pleroma:4000
 }
+
+autumnsky.systems {
+	root /var/www/html/autumnsky_systems
+  file_server
+}

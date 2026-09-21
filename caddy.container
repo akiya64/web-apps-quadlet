@@ -7,6 +7,7 @@ Pod=caddy.pod
 Volume=%h/pods/caddy/caddyfile:/etc/caddy
 Volume=%h/pods/caddy/data:/data
 Volume=%h/pods/caddy/config:/config
+Volume=%h/pods/autumnsky_systems:/var/www/html/autumnsky_systems
 
 [Service]
 Restart=always
