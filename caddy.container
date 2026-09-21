@@ -8,6 +8,7 @@ Volume=%h/pods/caddy/caddyfile:/etc/caddy
 Volume=%h/pods/caddy/data:/data
 Volume=%h/pods/caddy/config:/config
 Volume=%h/pods/autumnsky_systems:/var/www/html/autumnsky_systems
+Volume=%h/pods/wordpress/html:/var/www/html/wordpress
 
 [Service]
 Restart=always

@@ -6,7 +6,15 @@ autumnsky.jp {
 	reverse_proxy pleroma:4000
 }
 
+blog.autumnsky.jp {
+	php_fastcgi wordpress:9000 {
+		root /var/www/html
+	}
+	root /var/www/html/wordpress
+	file_server
+}
+
 autumnsky.systems {
 	root /var/www/html/autumnsky_systems
-  file_server
+	file_server
 }
