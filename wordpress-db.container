@@ -1,0 +1,15 @@
+[Unit]
+Description=MariaDB for WordPress
+
+[Container]
+Image=docker.io/library/mariadb:lts
+ContainerName=wordpress-db
+Pod=wordpress.pod
+Environment=MARIADB_DATABASE=wordpress
+Volume=%h/pods/wordpress/db:/var/lib/mysql
+Secret=wordpress-db-user,type=env,target=MARIADB_USER
+Secret=wordpress-db-pass,type=env,target=MARIADB_PASSWORD
+Secret=wordpress-db-root,type=env,target=MARIADB_ROOT_PASSWORD
+
+[Install]
+WantedBy=multi-user.target

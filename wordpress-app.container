@@ -1,0 +1,19 @@
+[Unit]
+Description=WordPress app
+Requires=wordpress-db.service
+After=wordpress-db.service
+
+[Container]
+Image=docker.io/library/wordpress:7.1-php8.5-fpm
+ContainerName=wordpress-app
+Pod=wordpress.pod
+Volume=%h/pods/wordpress/html:/var/www/html
+Environment=WORDPRESS_DB_NAME=wordpress WORDPRESS_DB_HOST=127.0.0.1
+Secret=wordpress-db-user,type=env,target=WORDPRESS_DB_USER
+Secret=wordpress-db-pass,type=env,target=WORDPRESS_DB_PASS
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
