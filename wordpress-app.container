@@ -10,7 +10,7 @@ Pod=wordpress.pod
 Volume=%h/pods/wordpress/html:/var/www/html
 Environment=WORDPRESS_DB_NAME=wordpress WORDPRESS_DB_HOST=127.0.0.1
 Secret=wordpress-db-user,type=env,target=WORDPRESS_DB_USER
-Secret=wordpress-db-pass,type=env,target=WORDPRESS_DB_PASS
+Secret=wordpress-db-pass,type=env,target=WORDPRESS_DB_PASSWORD
 
 [Service]
 Restart=always
