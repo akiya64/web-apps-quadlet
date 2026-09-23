@@ -1,0 +1,13 @@
+[Unit]
+Description=Postgresql for forgejo
+
+[Container]
+Image=docker.io/library/postgres:18-alpine
+ContainerName=forgejo-db
+Pod=forgejo.pod
+Environment=POSTGRES_USER=forgejo
+Volume=%h/pods/forgejo/postgresql:/var/lib/postgresql
+Secret=forgejo-db-pass,type=env,target=POSTGRES_PASSWORD
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,21 @@
+[Unit]
+Description=Forgejo app
+Requires=forgejo-db.service
+After=forgejo-db.service
+
+[Container]
+Image=codeberg.org/forgejo/forgejo:15-rootless
+ContainerName=forgejo-app
+Pod=forgejo.pod
+Environment=USER_UID=1000 USER_GID=1000
+Environment=FORGEJO__database__DB_TYPE=postgres
+Environment=FORGEJO__database__HOST=127.0.0.1
+Environment=FORGEJO__database__NAME=forgejo
+Volume=%h/pods/forgejo/data:/data:U
+Secret=forgejo-db-pass,type=env,target=FORGEJO__database__PASSWD
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
