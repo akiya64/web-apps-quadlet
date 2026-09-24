@@ -11,8 +11,12 @@ Environment=USER_UID=1000 USER_GID=1000
 Environment=FORGEJO__database__DB_TYPE=postgres
 Environment=FORGEJO__database__HOST=127.0.0.1
 Environment=FORGEJO__database__NAME=forgejo
+Environment=FORGEJO__database__USER=forgejo
 Volume=%h/pods/forgejo/data:/data:U
 Secret=forgejo-db-pass,type=env,target=FORGEJO__database__PASSWD
+
+Environment=FORGEJO__security__INSTALL_LOCK=true
+Environment=FORGEJO__service__DISABLE_REGISTRATION=true
 
 [Service]
 Restart=always
