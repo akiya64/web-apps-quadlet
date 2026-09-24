@@ -1,8 +1,0 @@
-[Unit]
-Description=Caddy pod
-
-[Pod]
-PodName=caddy
-PublishPort=80:80
-PublishPort=443:443
-Network=web-apps.network
