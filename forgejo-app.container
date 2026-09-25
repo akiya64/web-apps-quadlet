@@ -7,16 +7,7 @@ After=forgejo-db.service
 Image=codeberg.org/forgejo/forgejo:15-rootless
 ContainerName=forgejo-app
 Pod=forgejo.pod
-Environment=USER_UID=1000 USER_GID=1000
-Environment=FORGEJO__database__DB_TYPE=postgres
-Environment=FORGEJO__database__HOST=127.0.0.1
-Environment=FORGEJO__database__NAME=forgejo
-Environment=FORGEJO__database__USER=forgejo
-Volume=%h/pods/forgejo/data:/data:U
-Secret=forgejo-db-pass,type=env,target=FORGEJO__database__PASSWD
-
-Environment=FORGEJO__security__INSTALL_LOCK=true
-Environment=FORGEJO__service__DISABLE_REGISTRATION=true
+Volume=%h/pods/forgejo/gitea:/var/lib/gitea:U
 
 [Service]
 Restart=always
