@@ -7,7 +7,7 @@ ContainerName=pleroma-db
 Pod=pleroma.pod
 Environment=POSTGRES_USER=pleroma
 Volume=%h/pods/pleroma/postgresql:/var/lib/postgresql
-Secret=pleroma-db-root,type=env,target=POSTGRES_PASSWORD
+Secret=pleroma-db-pass,type=env,target=POSTGRES_PASSWORD
 
 [Install]
 WantedBy=multi-user.target
