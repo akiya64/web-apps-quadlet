@@ -4,7 +4,7 @@ Requires=pleroma-db.service
 After=pleroma-db.service
 
 [Container]
-Image=localhost/pleroma
+Image=localhost/pleroma:2.10.2
 ContainerName=pleroma-app
 Pod=pleroma.pod
 Environment=DB_USER=pleroma DB_NAME=pleroma DB_HOST=127.0.0.1
