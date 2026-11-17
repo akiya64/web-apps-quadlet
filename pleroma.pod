@@ -1,3 +1,6 @@
 [Pod]
 PodName=pleroma
 Network=web-apps.network
+
+[Install]
+WantedBy=default.target

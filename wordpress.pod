@@ -1,3 +1,6 @@
 [Pod]
 PodName=wordpress
 Network=web-apps.network
+
+[Install]
+WantedBy=default.target

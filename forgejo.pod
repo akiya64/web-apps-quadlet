@@ -1,3 +1,6 @@
 [Pod]
 PodName=forgejo
 Network=web-apps.network
+
+[Install]
+WantedBy=default.target
